@@ -6,7 +6,7 @@ import retrofit2.http.GET;
 
 import java.util.List;
 
-public interface GithubRepository {
+public interface GithubRepoRepository {
 
     @GET("/users/allegro/repos")
     Call<List<GithubRepo>> getReposFromGithub();
