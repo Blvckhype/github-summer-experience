@@ -2,7 +2,6 @@ package pl.allegro.summer.experience.github.service;
 
 import org.springframework.stereotype.Service;
 import pl.allegro.summer.experience.github.model.GithubRepo;
-import pl.allegro.summer.experience.github.model.LastModifiedRepo;
 import pl.allegro.summer.experience.github.parser.DataParser;
 import pl.allegro.summer.experience.github.repository.GithubRepoRepository;
 import retrofit2.Response;
@@ -40,19 +39,12 @@ public class GithubRepoService {
         }
     }
 
-    public LastModifiedRepo lastModifiedRepo() throws IOException, ParseException {
-        int position = -1;
+    public GithubRepo lastModifiedRepo() throws IOException {
         List<GithubRepo> githubRepos = getAllGithubRepositories();
-        if (githubRepos.size() > 0) {
-            List<Date> reposModifiedDate = new ArrayList<>();
-            for (GithubRepo githubRepo : githubRepos) {
-                reposModifiedDate.add(DataParser.parseDate(githubRepo.getUpdatedAt()));
-            }
-            position = reposModifiedDate.indexOf(Collections.max(reposModifiedDate));
-        }
-        if (position < 0)
-            throw new IOException("Unexpected ERROR");
-        return new LastModifiedRepo(githubRepos.get(position).getName());
+        Collections.sort(githubRepos);
+//        Collections.reverse(githubRepos);
+        githubRepos.forEach(GithubRepo::getName);
+        return githubRepos.get(0);
     }
 
 }
