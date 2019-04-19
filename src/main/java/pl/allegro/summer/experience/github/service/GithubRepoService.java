@@ -42,7 +42,6 @@ public class GithubRepoService {
     public GithubRepo lastModifiedRepo() throws IOException {
         List<GithubRepo> githubRepos = getAllGithubRepositories();
         Collections.sort(githubRepos);
-//        Collections.reverse(githubRepos);
         githubRepos.forEach(GithubRepo::getName);
         return githubRepos.get(0);
     }
