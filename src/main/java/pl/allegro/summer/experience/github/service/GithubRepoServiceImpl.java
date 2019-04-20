@@ -1,6 +1,7 @@
 package pl.allegro.summer.experience.github.service;
 
 import org.springframework.stereotype.Service;
+import pl.allegro.summer.experience.github.exception.RepositoriesNotFoundException;
 import pl.allegro.summer.experience.github.model.GithubRepo;
 import pl.allegro.summer.experience.github.repository.GithubRepoRepository;
 import retrofit2.Response;
@@ -43,7 +44,7 @@ public class GithubRepoServiceImpl implements GithubRepoService {
             githubRepos.forEach(GithubRepo::getName);
             return githubRepos.get(0);
         }
-        return null;
+        return throw new RepositoriesNotFoundException();
     }
 
     GithubRepoRepository getGithubRepoRepository() {
