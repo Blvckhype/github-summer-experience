@@ -41,7 +41,6 @@ public class GithubRepoServiceImpl implements GithubRepoService {
         List<GithubRepo> githubRepos = getAllGithubRepositories();
         if (githubRepos.size() >= 1) {
             Collections.sort(githubRepos);
-            githubRepos.forEach(GithubRepo::getName);
             return githubRepos.get(0);
         }
         throw new RepositoriesNotFoundException();

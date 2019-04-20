@@ -6,9 +6,13 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import pl.allegro.summer.experience.github.exception.RepositoriesNotFoundException;
+import pl.allegro.summer.experience.github.model.GithubRepo;
 import pl.allegro.summer.experience.github.service.GithubRepoServiceImpl;
 
 import java.io.IOException;
+import java.util.List;
 
 import static io.restassured.RestAssured.when;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -47,5 +51,9 @@ public class GithubControllerTest {
     @Test
     public void LAST_MODIFIED_REPOSITORY_CHECK_RETURN_CONTENT() throws IOException {
         when().get("/lastModifiedRepository").then().body("name", equalTo(githubController.lastModifiedRepository().getName()));
+    }
+
+    @Test(expected = RepositoriesNotFoundException.class)
+    public void GET_REPOSITORIES_NOT_FOUND_EXCEPTION_FOR_MOCK_SIZE_ZERO() {
     }
 }
