@@ -44,7 +44,7 @@ public class GithubRepoServiceImpl implements GithubRepoService {
             githubRepos.forEach(GithubRepo::getName);
             return githubRepos.get(0);
         }
-        return throw new RepositoriesNotFoundException();
+        throw new RepositoriesNotFoundException();
     }
 
     GithubRepoRepository getGithubRepoRepository() {
