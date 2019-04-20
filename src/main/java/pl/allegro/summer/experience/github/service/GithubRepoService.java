@@ -8,5 +8,5 @@ import java.io.IOException;
 @Service
 public interface GithubRepoService {
 
-    public GithubRepo lastModifiedRepo() throws IOException;
+    GithubRepo lastModifiedRepo() throws IOException;
 }

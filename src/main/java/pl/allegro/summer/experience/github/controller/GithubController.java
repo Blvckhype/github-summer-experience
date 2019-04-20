@@ -13,8 +13,11 @@ import java.io.IOException;
 @RestController
 public class GithubController {
 
-    @Autowired
     private GithubRepoService githubRepoService;
+
+    public GithubController(GithubRepoService githubRepoService) {
+        this.githubRepoService = githubRepoService;
+    }
 
     @GetMapping(value = "/lastModifiedRepository", produces = MediaType.APPLICATION_JSON_VALUE)
     public GithubRepo lastModifiedRepository() throws IOException {
