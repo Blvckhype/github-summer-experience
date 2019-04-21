@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface GithubRepoRepository {
 
-    @GET("/users/allegro/repos")
+    @GET("/users/mati1212/repos")
     Call<List<GithubRepo>> getReposFromGithub();
 }

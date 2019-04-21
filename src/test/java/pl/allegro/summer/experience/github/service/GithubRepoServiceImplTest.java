@@ -1,10 +1,13 @@
 package pl.allegro.summer.experience.github.service;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
+import pl.allegro.summer.experience.github.exception.RepositoriesNotFoundException;
 import pl.allegro.summer.experience.github.model.GithubRepo;
 
 import java.io.IOException;
@@ -35,4 +38,11 @@ public class GithubRepoServiceImplTest {
     public void GITHUB_API_RESPONSE_OK() throws IOException {
         Assert.assertEquals(200, githubRepoService.getGithubRepoRepository().getReposFromGithub().execute().code());
     }
+
+//    @Test
+//    public void GET_REPOSITORIES_NOT_FOUND_EXCEPTION_FOR_SIZE_ZERO_LIST() throws IOException {
+//        List<GithubRepo> repos = new ArrayList<>();
+//        githubRepoService.lastModifiedRepo(repos);
+//        assertThrows(RepositoriesNotFoundException.class, repos::size);
+//    }
 }

@@ -37,8 +37,8 @@ public class GithubRepoServiceImpl implements GithubRepoService {
     }
 
     @Override
-    public GithubRepo lastModifiedRepo() throws IOException {
-        List<GithubRepo> githubRepos = getAllGithubRepositories();
+    public GithubRepo lastModifiedRepo(List<GithubRepo> githubRepos) throws IOException {
+        githubRepos = getAllGithubRepositories();
         if (githubRepos.size() >= 1) {
             Collections.sort(githubRepos);
             return githubRepos.get(0);

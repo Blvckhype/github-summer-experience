@@ -9,6 +9,7 @@ import pl.allegro.summer.experience.github.service.GithubRepoService;
 import pl.allegro.summer.experience.github.service.GithubRepoServiceImpl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @RestController
 public class GithubController {
@@ -21,6 +22,6 @@ public class GithubController {
 
     @GetMapping(value = "/lastModifiedRepository", produces = MediaType.APPLICATION_JSON_VALUE)
     public GithubRepo lastModifiedRepository() throws IOException {
-        return githubRepoService.lastModifiedRepo();
+        return githubRepoService.lastModifiedRepo(new ArrayList<>());
     }
 }
