@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class RepositoriesNotFoundException extends RuntimeException{
 
     public RepositoriesNotFoundException() {
-        super("<html><body>ERROR 404<br>" +
-                "Messege: User haven't got any repositories</body></html>");
+        super("<html><body>" +
+                "ERROR 404<br>" +
+                "Message: User haven't got any repositories" +
+                "</body></html>");
     }
 }

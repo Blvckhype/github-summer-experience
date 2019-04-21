@@ -1,5 +1,7 @@
 package pl.allegro.summer.experience.github.service;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import pl.allegro.summer.experience.github.exception.RepositoriesNotFoundException;
 import pl.allegro.summer.experience.github.model.GithubRepo;
@@ -37,8 +39,8 @@ public class GithubRepoServiceImpl implements GithubRepoService {
     }
 
     @Override
-    public GithubRepo lastModifiedRepo(List<GithubRepo> githubRepos) throws IOException {
-        githubRepos = getAllGithubRepositories();
+    public GithubRepo lastModifiedRepo() throws IOException {
+        List<GithubRepo> githubRepos = getAllGithubRepositories();
         if (githubRepos.size() >= 1) {
             Collections.sort(githubRepos);
             return githubRepos.get(0);
